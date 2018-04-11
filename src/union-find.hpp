@@ -25,6 +25,7 @@ class UnionFind {
 		unsigned int num_sets() const;
 		unsigned int num_elements() const;
 		bool are_in_same_set(int x, int y);
+		bool are_in_same_set(std::vector<int>& ids);
 
 	private:
 		std::vector<UFNode*> elements;

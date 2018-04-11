@@ -2,7 +2,7 @@
 
 UnionFind::UnionFind(int n) :
 set_count(0) {
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; ++i) {
 		MakeSet();
 	}
 }
@@ -13,10 +13,10 @@ UnionFind::~UnionFind() {
 
 UnionFind& UnionFind::operator=(const UnionFind& rhs) {
 	clear();
-	for (unsigned int i = 0; i < rhs.num_elements(); i++) {
+	for (unsigned int i = 0; i < rhs.num_elements(); ++i) {
 		MakeSet();
 	}
-	for (unsigned int i = 0; i < rhs.num_elements(); i++) {
+	for (unsigned int i = 0; i < rhs.num_elements(); ++i) {
 		elements[i]->parent = elements[rhs.elements[i]->parent->class_id];
 	}
 	return *this;
@@ -45,6 +45,15 @@ bool UnionFind::are_in_same_set(int x, int y) {
 	return elements[x]->is_in_same_set(*(elements[y]));
 }
 
+bool UnionFind::are_in_same_set(std::vector<int>& ids) {
+	if (ids.empty()) return true;
+	int rep = Find(ids[0]);
+	for (unsigned int i = 0; i < ids.size(); ++i) {
+		if (rep != Find(ids[i])) return false;
+	}
+	return true;
+}
+
 /* ------------ private ------------- */
 
 void UnionFind::clear() {
@@ -56,7 +65,7 @@ void UnionFind::clear() {
 }
 
 void UnionFind::compress() {
-	for (unsigned int i = 0; i < elements.size(); i++) {
+	for (unsigned int i = 0; i < elements.size(); ++i) {
 		Find(i);
 	}
 }
