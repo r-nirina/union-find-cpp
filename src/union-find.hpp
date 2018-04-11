@@ -11,7 +11,11 @@ class UnionFind {
 		UnionFind(int n = 0);
 		~UnionFind();
 
+		// Duplicates vector elements while keeping the same tree state within its content
+		UnionFind& operator=(const UnionFind& rhs);
+
 		// Creates new EquivalenceClass and returns its class_id, which is equal to its index in the elements vector
+		// Increments internal number of sets accordingly
 		int MakeSet();
 
 		unsigned int num_sets() const;
@@ -21,6 +25,7 @@ class UnionFind {
 		std::vector<EquivalenceClass*> elements;
 		unsigned int set_count;
 
+		// Resets everything
 		void clear();
 
 };
