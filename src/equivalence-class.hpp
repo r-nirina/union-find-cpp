@@ -3,12 +3,12 @@
 
 class EquivalenceClass {
 
-    public:
-        EquivalenceClass(unsigned int id);
+	public:
+		EquivalenceClass(unsigned int id);
 
-        unsigned int class_id;
-        int rank;
-        EquivalenceClass* parent;
+		unsigned int class_id;
+		int rank;
+		EquivalenceClass* parent;
 
 };
 
