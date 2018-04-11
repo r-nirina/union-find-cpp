@@ -19,6 +19,8 @@ class UnionFind {
 		// Increments internal number of sets accordingly
 		int MakeSet();
 
+		int Find(int x);
+
 		unsigned int num_sets() const;
 		unsigned int num_elements() const;
 
