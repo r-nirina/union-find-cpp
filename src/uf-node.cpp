@@ -1,15 +1,19 @@
-#include "equivalence-class.hpp"
+#include "uf-node.hpp"
 
-EquivalenceClass::EquivalenceClass(unsigned int id) :
+UFNode::UFNode(unsigned int id) :
 class_id(id),
 rank(0),
 parent(this) {}
 
-int EquivalenceClass::Find() {
+int UFNode::Find() {
     int rep = parent->class_id;
     if (rep != class_id) {
         rep = parent->Find();
         parent = parent->parent;
     }
     return rep;
+}
+
+bool UFNode::is_in_same_set(UFNode& rhs) {
+    return Find() == rhs.Find();
 }

@@ -7,7 +7,7 @@ CXXFLAGS  += -g -Wall -std=c++11 -pedantic
 
 # Source files
 SOURCES = 
-SOURCES += equivalence-class.cpp
+SOURCES += uf-node.cpp
 SOURCES += union-find.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)

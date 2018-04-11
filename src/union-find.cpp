@@ -24,7 +24,7 @@ UnionFind& UnionFind::operator=(const UnionFind& rhs) {
 
 int UnionFind::MakeSet() {
 	int id = num_elements();
-	elements.push_back(new EquivalenceClass(id));
+	elements.push_back(new UFNode(id));
 	set_count++;
 	return id;
 }
@@ -39,6 +39,10 @@ unsigned int UnionFind::num_elements() const {
 
 unsigned int UnionFind::num_sets() const {
 	return set_count;
+}
+
+bool UnionFind::are_in_same_set(int x, int y) {
+	return elements[x]->is_in_same_set(*(elements[y]));
 }
 
 /* ------------ private ------------- */

@@ -1,7 +1,7 @@
 #ifndef UNION_FIND_HPP
 #define UNION_FIND_HPP
 
-#include "equivalence-class.hpp"
+#include "uf-node.hpp"
 
 #include <vector>
 
@@ -15,7 +15,7 @@ class UnionFind {
 		// Resets current instance
 		UnionFind& operator=(const UnionFind& rhs);
 
-		// Creates new EquivalenceClass and returns its class_id, which is equal to its index in the elements vector
+		// Creates new UFNode and returns its class_id, which is equal to its index in the elements vector
 		// Increments internal number of sets accordingly
 		int MakeSet();
 
@@ -24,9 +24,10 @@ class UnionFind {
 
 		unsigned int num_sets() const;
 		unsigned int num_elements() const;
+		bool are_in_same_set(int x, int y);
 
 	private:
-		std::vector<EquivalenceClass*> elements;
+		std::vector<UFNode*> elements;
 		unsigned int set_count;
 
 		// Resets everything
