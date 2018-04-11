@@ -12,6 +12,7 @@ class UnionFind {
 		~UnionFind();
 
 		// Duplicates vector elements while keeping the same tree state within its content
+		// Resets current instance
 		UnionFind& operator=(const UnionFind& rhs);
 
 		// Creates new EquivalenceClass and returns its class_id, which is equal to its index in the elements vector
