@@ -53,3 +53,13 @@ void UnionFind::clear() {
 	if (!elements.empty()) elements.clear();
 	set_count = 0;
 }
+
+void UnionFind::compress() {
+	for (unsigned int i = 0; i < elements.size(); i++) {
+		Find(i);
+	}
+}
+
+void UnionFind::flatten() {
+	compress();
+}

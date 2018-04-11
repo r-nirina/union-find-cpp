@@ -19,6 +19,7 @@ class UnionFind {
 		// Increments internal number of sets accordingly
 		int MakeSet();
 
+		// Uses path compression
 		int Find(int x);
 
 		unsigned int num_sets() const;
@@ -30,6 +31,10 @@ class UnionFind {
 
 		// Resets everything
 		void clear();
+
+		// Calls Find on all elements, thus flattening the tree
+		void compress();
+		void flatten();
 
 };
 
