@@ -30,10 +30,7 @@ int UnionFind::MakeSet() {
 }
 
 int UnionFind::Find(int x) {
-	if (elements[x]->parent->class_id != x) {
-		elements[x]->parent->class_id = Find(elements[x]->parent->class_id);
-	}
-	return elements[x]->parent->class_id;
+	return elements[x]->Find();
 }
 
 unsigned int UnionFind::num_elements() const {
