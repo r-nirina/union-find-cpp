@@ -22,6 +22,10 @@ class UnionFind {
 		// Uses path compression
 		int Find(int x);
 
+		// Union by rank
+		// Returns true if x and y were joined, which means they were not in the same equivalence class before, returns false otherwise
+		bool Union(int x, int y);
+
 		unsigned int num_sets() const;
 		unsigned int num_elements() const;
 		bool are_in_same_set(int x, int y);
