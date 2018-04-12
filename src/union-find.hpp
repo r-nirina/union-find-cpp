@@ -33,6 +33,7 @@ class UnionFind {
 		bool are_in_same_set(std::vector<int>& ids);
 		void print(std::ostream& out = std::cout);
 		friend std::ostream& operator<<(std::ostream& out, UnionFind& uf);
+		std::vector<std::vector<int>> fetch_sets(bool drop_empty_sets = true);
 
 	private:
 		std::vector<UFNode*> elements;
@@ -44,7 +45,6 @@ class UnionFind {
 		// Calls Find on all elements, thus flattening the tree
 		void compress();
 		void flatten();
-		std::vector<std::vector<int>> fetch_sets();
 
 };
 
