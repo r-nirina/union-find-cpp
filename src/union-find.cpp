@@ -76,6 +76,25 @@ bool UnionFind::are_in_same_set(std::vector<int>& ids) {
 	return true;
 }
 
+void UnionFind::print(std::ostream& out) {
+	out << std::endl;
+	std::vector<std::vector<int>> sets = fetch_sets();
+	for (unsigned int i = 0; i < sets.size(); ++i) {
+		if (!sets[i].empty()) {
+			out << "set[" << i << "]	--->	{ ";
+			for (unsigned int j = 0; j < sets[i].size(); ++j) {
+				out << sets[i][j] << " ";
+			}
+			out << "}" << std::endl;
+		}
+	}
+}
+
+std::ostream& operator<<(std::ostream& out, UnionFind& uf) {
+	uf.print(out);
+	return out;
+}
+
 
 /* ------------ private ------------- */
 
@@ -95,4 +114,14 @@ void UnionFind::compress() {
 
 void UnionFind::flatten() {
 	compress();
+}
+
+std::vector<std::vector<int>> UnionFind::fetch_sets() {
+	std::vector<std::vector<int>> sets;
+	sets.resize(num_elements());
+	flatten();
+	for (unsigned int i = 0; i < elements.size(); ++i) {
+		sets[Find(i)].push_back(i);
+	}
+	return sets;
 }
