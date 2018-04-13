@@ -1,5 +1,5 @@
-#ifndef EQUIVALENCE_CLASS_HPP
-#define EQUIVALENCE_CLASS_HPP
+#ifndef UF_NODE_HPP
+#define UF_NODE_HPP
 
 class UFNode {
 
